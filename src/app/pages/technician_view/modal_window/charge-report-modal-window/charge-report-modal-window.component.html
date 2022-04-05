@@ -1,0 +1,78 @@
+<nb-card>
+    <nb-card-header>Inserisci report</nb-card-header>
+    <nb-card-body [(ngModel)]="toDialog">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputFirstName" class="label">Nome</label>
+                    <input #firstname type="text" [disabled]=disabled nbInput fullWidth id="inputFirstName"
+                        placeholder="First Name" value={{toDialog.cittadino}}>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputLastName" class="label">Cognome</label>
+                    <input #lastname type="text" [disabled]=disabled nbInput fullWidth id="inputLastName"
+                        placeholder="Last Name" value={{toDialog.cittadino}}>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputEmail" class="label">Codice fiscale</label>
+                    <input #email type="email" [disabled]=disabled nbInput fullWidth id="inputEmail" placeholder="Email"
+                        value={{toDialog.cittadino}}>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputWebsite" class="label">Codice prenotazione</label>
+                    <input #cellphone type="text" [disabled]=disabled nbInput fullWidth id="inputWebsite"
+                        placeholder="Website" value={{toDialog.codicePrenotazione}}>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputEmail" class="label">Prestazione</label>
+                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
+                        value="{{toDialog.prestazione}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputWebsite" class="label">Codice fiscale medico</label>
+                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
+                        placeholder="Codice fiscale" value={{citizen.ssn}}>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputEmail" class="label">Data esecuzione</label>
+                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
+                        value="{{toDialog.prestazione}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputWebsite" class="label">Ora esecuzione</label>
+                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
+                        placeholder="Codice fiscale" value={{citizen.ssn}}>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <textarea rows="5" #sintesi [disabled]=disabled nbInput fullWidth shape="round"
+                placeholder="Commento alla prestazione"></textarea>
+        </div>
+    </nb-card-body>
+    <nb-card-footer>
+        <button class="cancel" nbButton status="danger" (click)="cancel()">Indietro</button>
+        <button nbButton status="success" [disabled]=disabled
+            (click)="submit(firstname.value, lastname.value, email.value, cellphone.value)"> Inserisci</button>
+    </nb-card-footer>
+</nb-card>
