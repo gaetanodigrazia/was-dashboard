@@ -39,6 +39,33 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Prodotti',
+    icon: 'cube-outline',
+    link: '/pages/',
+    children: [
+      {
+        title: 'Lista',
+        link: 'product/list/active',
+        icon: 'list-outline',
+      },
+      {
+        title: 'Nuova prenotazione',
+        link: 'user/list/booking',
+        icon: 'plus-outline'
+      },
+      {
+        title: 'Modifica prenotazione',
+        link: '/pages/smart-table',
+        icon: 'edit-outline'
+      },
+      {
+        title: 'Archivio prenotazioni',
+        link: 'booking/list/archived',
+        icon: 'archive-outline',
+      },
+    ],
+  },
+  {
     title: 'Prestazioni',
     icon: 'activity-outline',
     children: [

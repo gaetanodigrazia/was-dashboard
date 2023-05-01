@@ -53,6 +53,11 @@ const routes: Routes = [{
         .then(m => m.EditorsModule),
     },
     {
+      path: 'product/list/:status',
+      loadChildren: () => import('./product_view/module/product-list.module')
+        .then(m => m.ProductListModule),
+    },
+    {
       path: 'booking/list/:status',
       loadChildren: () => import('./technician_view/module/booking-list.module')
         .then(m => m.BookingListModule),
