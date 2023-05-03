@@ -27,6 +27,7 @@ import { CategoryService } from './shared/category.service';
 import { RoleService } from './shared/role.service';
 import { PathologyService } from './shared/pathology.service';
 import { ProductService } from './shared/product.service';
+import { CustomerService } from './shared/customer.service';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProductService } from './shared/product.service';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
   ],
-  providers: [BookingService, CitizenService, MedicalServiceService, CategoryService, RoleService, PathologyService, ProductService],
+  providers: [BookingService, CitizenService, MedicalServiceService, 
+    CategoryService, RoleService, PathologyService, ProductService, CustomerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

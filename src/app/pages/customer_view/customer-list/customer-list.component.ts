@@ -13,13 +13,17 @@ import { ShowReportStatusComponent } from '../button/show-report-status/show-rep
 import { DeleteBookingButtonComponent } from '../button/delete-booking-button/delete-booking-button.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../model/product';
+import { Customer } from '../../../model/customer';
+import { CustomerService } from '../../../shared/customer.service';
+
 @Component({
-  selector: 'ngx-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'ngx-customer-list',
+  templateUrl: './customer-list.component.html',
+  styleUrls: ['./customer-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
-  products: Product[];
+export class CustomerListComponent implements OnInit {
+
+  products: Customer[];
   to_query_status: number;
   private sub: any;
   @Input() value;
@@ -39,23 +43,26 @@ export class ProductListComponent implements OnInit {
         title: 'Nome',
         type: 'string',
       },
-      description: {
-        title: 'Description',
+      surname: {
+        title: 'Cognome',
         type: 'string',
       },
-      price: {
-        title: 'Price',
-        type: 'number',
+      businessName: {
+        title: 'Ragione Sociale',
+        type: 'string',
       },
-      // oraPrenotazione: {
-      //   title: 'Ora prenotazione',
-      //   type: 'string',
-      //   valuePrepareFunction: (date) => {
-      //     console.log(date)
-      //     return date;
-      //   },
-      //   filter: false
-      // },
+      vatNumber: {
+        title: 'Partita Iva',
+        type: 'string',
+      },
+      country: {
+        title: 'Nazione',
+        type: 'string',
+      },
+      city: {
+        title: 'Città',
+        type: 'string',
+      },
       status: {
         title: 'Status',
         type: "custom",
@@ -80,7 +87,7 @@ export class ProductListComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   data: Booking[];
 
-  constructor(private productService: ProductService, 
+  constructor(private customerService: CustomerService, 
     private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
     route.params.subscribe(params => {
       if (params['status'] === "active") {
@@ -91,7 +98,7 @@ export class ProductListComponent implements OnInit {
       console.log(params)
     });
     /*This do the trick!*/
-    router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   ngOnInit(): void {
 
@@ -101,7 +108,7 @@ export class ProductListComponent implements OnInit {
       this.source.load(this.booking);
     }); */
 
-    this.productService.getProducts().subscribe(products => {
+    this.customerService.getCustomers().subscribe(products => {
       this.products = products;
       console.log(this.products);
       this.source.load(this.products);
