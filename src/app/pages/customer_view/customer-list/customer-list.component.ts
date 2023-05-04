@@ -9,8 +9,8 @@ import { ShowCitizenButtonComponent } from '../button/show-citizen-button/show-c
 import { ShowMedicalServiceButtonComponent } from '../button/show-medical-service-button/show-medical-service-button.component';
 import { Citizen } from '../../../model/citizen';
 import { ChargeReportStatusButtonComponent } from '../button/charge-report-status-button/charge-report-status-button.component';
-import { ShowReportStatusComponent } from '../button/show-report-status/show-report-status.component';
 import { DeleteBookingButtonComponent } from '../button/delete-booking-button/delete-booking-button.component';
+import { ShowDetailsButtonComponent } from '../button/show-details-button/show-details-button.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../model/product';
 import { Customer } from '../../../model/customer';
@@ -63,13 +63,21 @@ export class CustomerListComponent implements OnInit {
         title: 'Città',
         type: 'string',
       },
-      status: {
-        title: 'Status',
+      email: {
+        title: 'Email',
+        type: 'string',
+      },
+      phoneNumber: {
+        title: 'Telefono',
+        type: 'string',
+      },
+      details: {
+        title: 'Dettagli',
         type: "custom",
         valuePrepareFunction: (cell, row) => {
           return row;
         },
-        renderComponent: ChargeReportStatusButtonComponent,
+        renderComponent: ShowDetailsButtonComponent,
         filter: false
       },
       elimina: {
@@ -98,7 +106,7 @@ export class CustomerListComponent implements OnInit {
       console.log(params)
     });
     /*This do the trick!*/
-    //router.routeReuseStrategy.shouldReuseRoute = () => false;
+    router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   ngOnInit(): void {
 

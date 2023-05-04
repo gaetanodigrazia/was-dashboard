@@ -57,7 +57,6 @@ const routes: Routes = [{
       loadChildren: () => import('./customer_view/customer-view.module')
         .then(m => m.CustomerViewModule),
     },
-
     {
       path: 'product/list/:status',
       loadChildren: () => import('./product_view/module/product-list.module')

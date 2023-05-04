@@ -11,7 +11,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'FUNZIONI',
     group: true,
   },
-  {
+/*   {
     title: 'Prenotazioni',
     icon: 'calendar-outline',
     link: '/pages/',
@@ -37,29 +37,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'archive-outline',
       },
     ],
-  },
+  }, */
   {
     title: 'Clienti',
     icon: 'people-outline',
     children: [
       {
         title: 'Lista',
-        link: '/pages/customer/list',
+        link: '/pages/customer/list/active',
         icon: 'list-outline',
       },
       {
         title: 'Nuovo cliente',
-        link: '/pages/customer/create',
+        link: '/pages/customer/form/create',
         icon: 'plus-outline'
       },
       {
-        title: 'Modifica prenotazione',
-        link: '/pages/smart-table',
+        title: 'Modifica cliente',
+        link: '/pages/customer/form/update',
         icon: 'edit-outline'
       },
       {
-        title: 'Archivio prenotazioni',
-        link: 'booking/list/archived',
+        title: 'Archivio clienti',
+        link: '/pages/customer/list/archived',
         icon: 'archive-outline',
       },
     ],
@@ -91,7 +91,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  {
+/*   {
     title: 'Prestazioni',
     icon: 'activity-outline',
     children: [
@@ -108,8 +108,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/infinite-list',
       },
     ],
-  },
-  {
+  }, */
+/*   {
     title: 'Utenti',
     icon: 'people-outline',
     children: [
@@ -127,7 +127,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: 'user/list/edit',
       },
     ],
-  },
+  }, */
   {
     title: 'Report',
     icon: 'clipboard-outline',
@@ -165,76 +165,103 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-  // {
-  //   title: 'Fatture',
-  //   icon: 'archive-outline',
-  //   children: [
-  //     {
-  //       title: 'Lista',
-  //       link: '/pages/layout/stepper',
-  //     },
-  //     {
-  //       title: 'Nuova fattura',
-  //       link: '/pages/layout/list',
-  //     },
-  //     {
-  //       title: 'Modifica fattura',
-  //       link: '/pages/layout/infinite-list',
-  //     }
-  //   ],
-  // },
-  // {
-  //   title: 'Statistiche',
-  //   icon: 'pie-chart-outline',
-  //   children: [
-  //     {
-  //       title: 'Stepper',
-  //       link: '/pages/layout/stepper',
-  //     },
-  //     {
-  //       title: 'List',
-  //       link: '/pages/layout/list',
-  //     },
-  //     {
-  //       title: 'Infinite List',
-  //       link: '/pages/layout/infinite-list',
-  //     },
-  //     {
-  //       title: 'Accordion',
-  //       link: '/pages/layout/accordion',
-  //     },
-  //     {
-  //       title: 'Tabs',
-  //       pathMatch: 'prefix',
-  //       link: '/pages/layout/tabs',
-  //     },
-  //   ],
-  // },
-  // {
-  //   title: 'Magazzino',
-  //   icon: 'car-outline',
-  //   children: [
-  //     {
-  //       title: 'Stepper',
-  //       link: '/pages/layout/stepper',
-  //     },
-  //     {
-  //       title: 'List',
-  //       link: '/pages/layout/list',
-  //     },
-  //     {
-  //       title: 'Infinite List',
-  //       link: '/pages/layout/infinite-list',
-  //     },
-  //     {
-  //       title: 'Accordion',
-  //       link: '/pages/layout/accordion',
-  //     },
-  //     {
-  //       title: 'Tabs',
-  //       pathMatch: 'prefix',
-  //       link: '/pages/layout/tabs',
-  //     },
-  //   ],
-  // },
+/*   {
+    title: 'Fatture',
+    icon: 'archive-outline',
+    children: [
+      {
+        title: 'Lista',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: 'Nuova fattura',
+        link: '/pages/layout/list',
+      },
+      {
+        title: 'Modifica fattura',
+        link: '/pages/layout/infinite-list',
+      }
+    ],
+  }, */
+  {
+    title: 'Statistiche',
+    icon: 'pie-chart-outline',
+    children: [
+      {
+        title: 'Stepper',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: 'List',
+        link: '/pages/layout/list',
+      },
+      {
+        title: 'Infinite List',
+        link: '/pages/layout/infinite-list',
+      },
+      {
+        title: 'Accordion',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Tabs',
+        pathMatch: 'prefix',
+        link: '/pages/layout/tabs',
+      },
+    ],
+  },
+  {
+    title: 'Magazzino',
+    icon: 'layers-outline',
+    children: [
+      {
+        title: 'Stepper',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: 'List',
+        link: '/pages/layout/list',
+      },
+      {
+        title: 'Infinite List',
+        link: '/pages/layout/infinite-list',
+      },
+      {
+        title: 'Accordion',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Tabs',
+        pathMatch: 'prefix',
+        link: '/pages/layout/tabs',
+      },
+    ],
+  },
+  {
+    title: 'Ordini',
+    icon: 'car-outline',
+    children: [
+      {
+        title: 'Stepper',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: 'List',
+        link: '/pages/layout/list',
+      },
+      {
+        title: 'Infinite List',
+        link: '/pages/layout/infinite-list',
+      },
+      {
+        title: 'Accordion',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Tabs',
+        pathMatch: 'prefix',
+        link: '/pages/layout/tabs',
+      },
+    ],
+  },
 ];

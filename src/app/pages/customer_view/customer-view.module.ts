@@ -14,17 +14,21 @@ import { ChargeReportModalWindowComponent } from './modal_window/charge-report-m
 import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule } from '@nebular/theme';
 import { CustomerCreateComponent } from './customer-forms/customer-create/customer-create.component';
 import { CustomerRouterComponent } from './customer-router.component';
+import { ShowDetailsModalComponent } from './modal_window/show-details-modal/show-details-modal.component';
+import { ShowDetailsButtonComponent } from './button/show-details-button/show-details-button.component';
+import { DeleteModalWindowComponent } from './modal_window/delete-modal-window/delete-modal-window.component';
 
 const components = [
   CustomerRouterComponent, CustomerListComponent, CustomerCreateComponent,
   ShowCitizenButtonComponent, ShowMedicalServiceButtonComponent,
   ShowCitizenModalWindowComponent, ShowMedicalServiceModalWindowComponent,
   ChargeReportStatusButtonComponent, ShowReportStatusComponent,
-  DeleteBookingButtonComponent, ChargeReportModalWindowComponent
+  DeleteBookingButtonComponent, ChargeReportModalWindowComponent, 
+  ShowDetailsModalComponent, ShowDetailsButtonComponent
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, DeleteModalWindowComponent],
   imports: [
     CommonModule, CustomerListRoutingModule, NbCardModule, 
     Ng2SmartTableModule, NbButtonModule, NbIconModule, NbInputModule

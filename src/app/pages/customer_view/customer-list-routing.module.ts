@@ -10,10 +10,10 @@ const routes: Routes = [{
   path: '',
   component: CustomerRouterComponent,
   children: [ {
-    path: 'create',
+    path: 'form/:action',
     component: CustomerCreateComponent,
   }, {
-    path: 'list',
+    path: 'list/:status',
     component: CustomerListComponent,
   }],
 }];

@@ -12,9 +12,14 @@ export class CustomerService {
     getCustomers(): Observable<Customer[]> {
         return this.http.get<Customer[]>('http://localhost:8083/customer-service');
     }
-
+    getCustomerById(id: string): Observable<Customer> {
+        return this.http.get<Customer>('http://localhost:8083/customer-service/' + id);
+    }
     getCustomersByStatus(status: number): Observable<Customer[]> {
         return this.http.get<Customer[]>('http://localhost:8083/customer-service/status/' + status);
+    }
+    create(customer:Customer): Observable<Customer>{
+        return this.http.post<Customer>('http://localhost:8083/customer-service', customer);
     }
 
 }

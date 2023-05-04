@@ -7,90 +7,74 @@
                     <div class="form-group row">
                         <label for="inputEmail1" class="label col-sm-3 col-form-label">Nome</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword2" class="label col-sm-3 col-form-label">Password</label>
-                        <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #name type="string" nbInput fullWidth id="name" placeholder="Nome">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail1" class="label col-sm-3 col-form-label">Cognome</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+                            <input #surname type="string" nbInput fullWidth id="surname" placeholder="Cognome">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">Ragione Sociale</label>
                         <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #businessName type="string" nbInput fullWidth id="businessName" placeholder="Ragione Sociale">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail1" class="label col-sm-3 col-form-label">Email</label>
+                        <label for="inputPassword2" class="label col-sm-3 col-form-label">Partita IVA</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword2" class="label col-sm-3 col-form-label">Partita Iva</label>
-                        <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #vatNumber type="string" nbInput fullWidth id="vatNumber" placeholder="Partita IVA">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail1" class="label col-sm-3 col-form-label">Nazione</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+                            <input #country type="string" nbInput fullWidth id="country" placeholder="Nazione">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">Città</label>
                         <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #city type="string" nbInput fullWidth id="city" placeholder="Città">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail1" class="label col-sm-3 col-form-label">Comune</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+                            <input #municipality type="string" nbInput fullWidth id="municipality" placeholder="Comune">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">Via/Piazza</label>
                         <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail1" class="label col-sm-3 col-form-label">Numero</label>
-                        <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+                            <input #street type="string" nbInput fullWidth id="street" placeholder="Via/Piazza">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">CAP</label>
                         <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #cap type="string" nbInput fullWidth id="cap" placeholder="CAP">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail1" class="label col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+                            <input #email type="email" nbInput fullWidth id="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword2" class="label col-sm-3 col-form-label">Telefono</label>
                         <div class="col-sm-9">
-                            <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+                            <input #phoneNumber type="string" nbInput fullWidth id="phoneNumber" placeholder="Telefono">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="offset-sm-3 col-sm-9">
-                            <button type="submit" nbButton status="primary">Sign in</button>
+                            <button type="submit" nbButton status="primary" 
+                            [value]="action" (click)="perform(name.value, surname.value, businessName.value, vatNumber.value,
+                            country.value, city.value, municipality.value, street.value, cap.value, email.value, phoneNumber.value)">{{action}}</button>
                         </div>
                     </div>
                 </form>
