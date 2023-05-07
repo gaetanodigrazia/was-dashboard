@@ -1,1 +1,10 @@
-<p>delete-modal-window works!</p>
+<nb-card>
+  <nb-card-header>Cancellazione</nb-card-header>
+  <nb-card-body [(ngModel)]="toDialog">
+    Sei sicuro di voler cancellare il cliente?
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="cancel" nbButton status="danger" (click)="delete()">Cancella</button>
+    <button class="close" nbButton status="success" (click)="close()">Chiudi</button>
+</nb-card-footer>
+</nb-card>

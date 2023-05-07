@@ -53,11 +53,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'plus-outline'
       },
       {
-        title: 'Modifica cliente',
-        link: '/pages/customer/form/update',
-        icon: 'edit-outline'
-      },
-      {
         title: 'Archivio clienti',
         link: '/pages/customer/list/archived',
         icon: 'archive-outline',

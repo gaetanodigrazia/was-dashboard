@@ -28,6 +28,7 @@ import { RoleService } from './shared/role.service';
 import { PathologyService } from './shared/pathology.service';
 import { ProductService } from './shared/product.service';
 import { CustomerService } from './shared/customer.service';
+import { TableActionsComponent } from './shared/table-actions/table-actions.component';
 
 
 @NgModule({

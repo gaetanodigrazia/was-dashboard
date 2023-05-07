@@ -1,104 +1,129 @@
 <nb-card>
-    <nb-card-header>Inserisci report</nb-card-header>
-    <nb-card-body [(ngModel)]="toDialog">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputFirstName" class="label">Nome</label>
-                    <input #firstname type="text" [disabled]=disabled nbInput fullWidth id="inputFirstName"
-                        placeholder="First Name" value={{customer.name}}>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputLastName" class="label">Cognome</label>
-                    <input #lastname type="text" [disabled]=disabled nbInput fullWidth id="inputLastName"
-                        placeholder="Last Name" value={{customer.surname}}>
-                </div>
+  <nb-card-header>Dettagli cliente</nb-card-header>
+  <nb-card-body [(ngModel)]="customer">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputId" class="label">ID</label>
+          <input #id type="text" [disabled]=true nbInput fullWidth id="inputId"
+                 placeholder="ID" value={{customer.id}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputName" class="label">Nome</label>
+          <input #name type="text" [disabled]=disabled nbInput fullWidth id="inputName"
+                 placeholder="Nome" value={{customer.name}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputSurname" class="label">Cognome</label>
+          <input #surname type="text" [disabled]=disabled nbInput fullWidth id="inputSurname"
+                 placeholder="Cognome" value={{customer.surname}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputBusinessName" class="label">Nome azienda</label>
+          <input #businessName type="text" [disabled]=disabled nbInput fullWidth id="inputBusinessName"
+                 placeholder="Nome azienda" value={{customer.businessName}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputVatNumber" class="label">Partita IVA</label>
+          <input #vatNumber type="text" [disabled]=disabled nbInput fullWidth id="inputVatNumber"
+                 placeholder="Partita IVA" value={{customer.vatNumber}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputCountry" class="label">Nazione</label>
+          <input #country type="text" [disabled]=disabled nbInput fullWidth id="inputCountry"
+                 placeholder="Paese" value={{customer.country}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputCity" class="label">Città</label>
+                <input #city type="text" [disabled]=disabled nbInput fullWidth id="inputCity"
+                    placeholder="City" value={{customer.city}}>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputEmail" class="label">Codice fiscale</label>
-                    <input #email type="email" [disabled]=disabled nbInput fullWidth id="inputEmail" placeholder="Email"
-                        value={{toDialog.vatNumber}}>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputWebsite" class="label">Codice prenotazione</label>
-                    <input #cellphone type="text" [disabled]=disabled nbInput fullWidth id="inputWebsite"
-                        placeholder="Website" value={{toDialog.country}}>
-                </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputMunicipality" class="label">Comune</label>
+                <input #municipality type="text" [disabled]=disabled nbInput fullWidth id="inputMunicipality"
+                    placeholder="Municipality" value={{customer.municipality}}>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputEmail" class="label">Prestazione</label>
-                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
-                        value="{{toDialog.country}}">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputWebsite" class="label">Codice fiscale medico</label>
-                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
-                        placeholder="Codice fiscale" value={{toDialog.phoneNumber}}>
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputStreet" class="label">Via</label>
+                <input #street type="text" [disabled]=disabled nbInput fullWidth id="inputStreet"
+                    placeholder="Street" value={{customer.street}}>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputEmail" class="label">Prestazione</label>
-                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
-                        value="{{toDialog.country}}">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputWebsite" class="label">Codice fiscale medico</label>
-                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
-                        placeholder="Codice fiscale" value={{toDialog.phoneNumber}}>
-                </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputStreetNumber" class="label">Numero Civico</label>
+                <input #streetNumber type="text" [disabled]=disabled nbInput fullWidth id="inputStreetNumber"
+                    placeholder="Street Number" value={{customer.streetNumber}}>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputEmail" class="label">Prestazione</label>
-                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
-                        value="{{toDialog.country}}">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputWebsite" class="label">Codice fiscale medico</label>
-                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
-                        placeholder="Codice fiscale" value={{toDialog.phoneNumber}}>
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputPostalCode" class="label">Codice postale</label>
+                <input #postalCode type="text" [disabled]=disabled nbInput fullWidth id="inputPostalCode"
+                    placeholder="Postal Code" value={{customer.postalCode}}>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputEmail" class="label">Prestazione</label>
-                    <input #indirizzo [disabled]=disabled type="email" nbInput fullWidth placeholder="Indirizzo"
-                        value="{{toDialog.country}}">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputWebsite" class="label">Codice fiscale medico</label>
-                    <input #SSN_medico type="text" [disabled]=disabled nbInput fullWidth id="inputSSN"
-                        placeholder="Codice fiscale" value={{toDialog.phoneNumber}}>
-                </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputEmail" class="label">Email</label>
+                <input #email type="email" [disabled]=disabled nbInput fullWidth id="inputEmail"
+                    placeholder="Email" value={{customer.email}}>
             </div>
         </div>
-    </nb-card-body>
-    <nb-card-footer>
-        <button class="cancel" nbButton status="danger" (click)="cancel()">Indietro</button>
-    </nb-card-footer>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputPhoneNumber" class="label">Telefono</label>
+                <input #phoneNumber type="text" [disabled]=disabled nbInput fullWidth id="inputPhoneNumber"
+                    placeholder="Phone Number" value={{customer.phoneNumber}}>
+            </div>
+        </div>
+<!--         <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputEmail" class="label">Email</label>
+                <input #email type="text" [disabled]=disabled nbInput fullWidth id="inputEmail"
+                    placeholder="Email" value={{customer.email}}>
+            </div>
+        </div> -->
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div class="col-sm-3">
+        <button class="cancel" nbButton status="success" (click)="cancel()">Indietro</button>
+      </div>
+      <div class="col-sm-3">
+        <button [hidden]=disabled class="cancel" nbButton status="warning" (click)="update(name.value, surname.value, businessName.value, vatNumber.value,
+        country.value, city.value, municipality.value, street.value, 
+        streetNumber.value, postalCode.value, email.value, phoneNumber.value)">Modifica</button>
+      </div>
+    </div>
+</nb-card-footer>
 </nb-card>
