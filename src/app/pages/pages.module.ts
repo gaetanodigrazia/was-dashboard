@@ -10,7 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ModalOverlaysModule } from './modal-overlays/modal-overlays.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NbCardModule } from '@nebular/theme';
-
+import { SharedModule} from '../shared/shared.module'
 
 @NgModule({
   imports: [
@@ -21,11 +21,11 @@ import { NbCardModule } from '@nebular/theme';
     ECommerceModule,
     MiscellaneousModule,
     Ng2SmartTableModule,
-    NbCardModule
+    NbCardModule,
+    SharedModule
   ],
   declarations: [
-    PagesComponent,
-  ],
+    PagesComponent,],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class PagesModule {

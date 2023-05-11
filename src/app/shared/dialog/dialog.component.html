@@ -1,0 +1,14 @@
+<nb-card>
+    <nb-card-header>{{title}}</nb-card-header>
+    <nb-card-body>{{message}}</nb-card-body>
+    <nb-card-footer>
+        <div class="row my-2">
+            <div class="col-sm text-center">
+                <button nbButton status="danger" size="small" (click)="close(true)">{{'Yes'}}</button>
+            </div>
+            <div class="col-sm text-center">
+                <button nbButton status="info" size="small" (click)="close(false)">{{'No'}}</button>
+            </div>
+        </div>
+    </nb-card-footer>
+</nb-card>

@@ -1,0 +1,65 @@
+<nb-card>
+  <nb-card-header>Dettagli cliente</nb-card-header>
+  <nb-card-body [(ngModel)]="product">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputId" class="label">ID</label>
+          <input #id type="text" [disabled]=true nbInput fullWidth id="inputId"
+                 placeholder="ID" value={{product.id}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputName" class="label">Nome</label>
+          <input #name type="text" [disabled]=disabled nbInput fullWidth id="inputName"
+                 placeholder="Nome" value={{product.name}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputSurname" class="label">Cognome</label>
+          <input #description type="text" [disabled]=disabled nbInput fullWidth id="inputSurname"
+                 placeholder="Cognome" value={{product.description}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputBusinessName" class="label">Nome azienda</label>
+          <input #b2bPrice type="text" [disabled]=disabled nbInput fullWidth id="inputBusinessName"
+                 placeholder="Nome azienda" value={{product.b2bPrice}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputVatNumber" class="label">Partita IVA</label>
+          <input #b2cPrice type="text" [disabled]=disabled nbInput fullWidth id="inputVatNumber"
+                 placeholder="Partita IVA" value={{product.b2cPrice}}>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+            <label for="inputCity" class="label">Città</label>
+            <input #isArchived type="text" [disabled]=disabled nbInput fullWidth id="inputCity"
+                placeholder="City" value={{product.isArchived}}>
+        </div>
+    </div>
+      </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div class="col-sm-3">
+        <button class="cancel" nbButton status="success" (click)="cancel()">Indietro</button>
+      </div>
+      <div class="col-sm-3">
+        <button [hidden]=disabled class="cancel" nbButton status="warning" (click)="update(
+          name.value, description.value, b2bPrice.value, b2cPrice.value,
+        isArchived.value)">Modifica</button>
+      </div>
+    </div>
+</nb-card-footer>
+</nb-card>

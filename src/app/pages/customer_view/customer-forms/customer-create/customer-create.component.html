@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>Nuovo cliente</nb-card-header>
+            <nb-card-body>
+                    <div class="form-group row">
+                        <label for="name" class="label col-sm-3 col-form-label">Nome</label>
+                        <div class="col-sm-9">
+                            <input #name type="string" nbInput fullWidth id="name" placeholder="Inserisci il tuo nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="surname" class="label col-sm-3 col-form-label">Cognome</label>
+                        <div class="col-sm-9">
+                            <input #surname type="string" nbInput fullWidth id="surname" placeholder="Inserisci il tuo cognome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="businessName" class="label col-sm-3 col-form-label">Ragione Sociale</label>
+                        <div class="col-sm-9">
+                            <input #businessName type="string" nbInput fullWidth id="businessName" placeholder="Inserisci la ragione sociale">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="vatNumber" class="label col-sm-3 col-form-label">Partita IVA</label>
+                        <div class="col-sm-9">
+                            <input #vatNumber type="string" nbInput fullWidth id="vatNumber" placeholder="Inserisci la partita IVA">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="country" class="label col-sm-3 col-form-label">Nazione</label>
+                        <div class="col-sm-9">
+                            <input #country type="string" nbInput fullWidth id="country" placeholder="Inserisci la tua nazione">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="city" class="label col-sm-3 col-form-label">Città</label>
+                        <div class="col-sm-9">
+                            <input #city type="string" nbInput fullWidth id="city" placeholder="Inserisci la tua città">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="municipality" class="label col-sm-3 col-form-label">Comune</label>
+                        <div class="col-sm-9">
+                            <input #municipality type="string" nbInput fullWidth id="municipality" placeholder="Inserisci il tuo comune">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="street" class="label col-sm-3 col-form-label">Via/Piazza</label>
+                        <div class="col-sm-9">
+                            <input #street type="string" nbInput fullWidth id="street" placeholder="Inserisci la tua via/piazza">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="streetNumber" class="label col-sm-3 col-form-label">Numero civico</label>
+                        <div class="col-sm-9">
+                            <input #streetNumber type="string" nbInput fullWidth id="streetNumber" placeholder="Inserisci il tuo numero civico">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cap" class="label col-sm-3 col-form-label">CAP</label>
+                        <div class="col-sm-9">
+                            <input #cap type="string" nbInput fullWidth id="cap" placeholder="Inserisci il CAP">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="label col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input #email type="email" nbInput fullWidth id="email" placeholder="Inserisci l'indirizzo email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="phoneNumber" class="label col-sm-3 col-form-label">Telefono</label>
+                        <div class="col-sm-9">
+                            <input #phoneNumber type="string" nbInput fullWidth id="phoneNumber" placeholder="Inserisci il numero di telefono">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button nbButton status="primary" [value]="action"
+                                (click)="perform(name.value, surname.value, businessName.value, vatNumber.value,
+                                country.value, city.value, municipality.value, street.value, streetNumber.value, cap.value, email.value, phoneNumber.value)">
+                                {{action}}
+                            </button>
+                        </div>
+                    </div>
+                </nb-card-body>
+        </nb-card>
+    </div>
+</div>

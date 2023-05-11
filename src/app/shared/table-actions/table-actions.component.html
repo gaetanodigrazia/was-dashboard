@@ -1,0 +1,6 @@
+<div class="d-flex flex-row justify-content-around">
+    <button *ngFor="let action of actions" nbButton ghost [status]="action.status" (click)="onCustomClicked(action.action)" [disabled]="!action.enabled">
+        <nb-icon [icon]="action.icon" [nbTooltip]="action.tooltip"></nb-icon>
+        <nb-badge *ngIf="action.badge!=undefined && action.badge" text="+1" status="success" position="bottom"></nb-badge>
+    </button>
+</div>
