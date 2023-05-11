@@ -17,7 +17,6 @@
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "start": "node server.js",
-    "build": "ng build --prod",
     "build:prod": "npm run build -- --configuration production --aot",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
@@ -31,13 +30,12 @@
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
-    "heroku-postbuild": "ng build -prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^12.1.0",
     "@angular/cdk": "12.1.0",
-    "@angular/cli": "^16.0.1",
     "@angular/common": "^12.1.0",
     "@angular/compiler": "^12.1.0",
     "@angular/compiler-cli": "^12.2.17",
@@ -90,7 +88,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.0",
-    "@angular/cli": "^16.0.1",
+    "@angular/cli": "^14.2.0",
     "@angular/compiler-cli": "^12.2.17",
     "@angular/language-service": "12.1.0",
     "@compodoc/compodoc": "1.0.1",
