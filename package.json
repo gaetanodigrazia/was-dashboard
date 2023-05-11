@@ -1,5 +1,5 @@
 {
-  "name": "smartlab",
+  "name": "was",
   "version": "8.0.0",
   "license": "MIT",
   "repository": {
@@ -31,14 +31,17 @@
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
-    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points --tsconfig \"./src/tsconfig.app.json\""
+    "postinstall": "ng build --aot -prod",
+    "heroku-postbuild": "ng build -prod"
   },
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^12.1.0",
     "@angular/cdk": "12.1.0",
+    "@angular/cli": "^16.0.1",
     "@angular/common": "^12.1.0",
     "@angular/compiler": "^12.1.0",
+    "@angular/compiler-cli": "^12.2.17",
     "@angular/core": "^12.1.0",
     "@angular/forms": "^12.1.0",
     "@angular/google-maps": "^12.1.0",
@@ -59,7 +62,7 @@
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.3",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "intl": "1.2.5",
     "ionicons": "2.0.1",
     "leaflet": "1.2.0",
@@ -82,13 +85,14 @@
     "tinymce": "4.5.7",
     "tslib": "^2.1.0",
     "typeface-exo": "0.0.22",
+    "typescript": "4.2.3",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.1.0",
-    "@angular/cli": "^12.1.0",
-    "@angular/compiler-cli": "^12.1.0",
+    "@angular-devkit/build-angular": "^12.1.4",
+    "@angular/cli": "^16.0.1",
+    "@angular/compiler-cli": "^12.2.17",
     "@angular/language-service": "12.1.0",
     "@compodoc/compodoc": "1.0.1",
     "@fortawesome/fontawesome-free": "^5.2.0",
@@ -99,6 +103,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "conventional-changelog-cli": "1.3.4",
+    "enhanced-resolve": "^3.3.0",
     "husky": "0.13.3",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
