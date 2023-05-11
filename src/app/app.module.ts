@@ -29,6 +29,7 @@ import { PathologyService } from './shared/pathology.service';
 import { ProductService } from './shared/product.service';
 import { CustomerService } from './shared/customer.service';
 import { TableActionsComponent } from './shared/table-actions/table-actions.component';
+import { StockService } from './shared/stock.service';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { TableActionsComponent } from './shared/table-actions/table-actions.comp
     ThemeModule.forRoot(),
   ],
   providers: [BookingService, CitizenService, MedicalServiceService, 
-    CategoryService, RoleService, PathologyService, ProductService, CustomerService],
+    CategoryService, RoleService, PathologyService, ProductService, CustomerService, StockService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

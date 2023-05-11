@@ -1,22 +1,37 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProductInputDTO } from '../pages/product_view/models/ProductInputDTO';
+import { ProductDetailsDTO } from '../pages/product_view/models/ProductDetailsDTO';
+import { ProductTableDTO } from '../pages/product_view/models/ProductTableDTO';
 
-import { Booking } from '../model/booking';
-import { Product } from '../model/product';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
 
-    constructor(private http: HttpClient) { }
+  private baseUrl = 'http://localhost:8082/product-service';
 
+  constructor(private http: HttpClient) { }
 
-    getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>('http://localhost:8082/product-service');
-    }
+  createProduct(productInput: ProductInputDTO): Observable<ProductDetailsDTO> {
+    return this.http.post<ProductDetailsDTO>(`${this.baseUrl}`, productInput);
+  }
 
-    getBookingsByStatus(status: number): Observable<Booking[]> {
-        return this.http.get<Booking[]>('http://localhost:8080/prenotazioni/status/' + status);
-    }
+  getAllProducts(): Observable<ProductTableDTO[]> {
+    return this.http.get<ProductTableDTO[]>(`${this.baseUrl}`);
+  }
+
+  getProductById(productId: string): Observable<ProductDetailsDTO> {
+    return this.http.get<ProductDetailsDTO>(`${this.baseUrl}/byId/${productId}`);
+  }
+
+  deleteProduct(productId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${productId}`);
+  }
+
+  updateProduct(product: ProductDetailsDTO, productId:string): Observable<ProductDetailsDTO> {
+    return this.http.put<ProductDetailsDTO>(`${this.baseUrl}/${productId}`,product);
+  }
 
 }

@@ -1,87 +1,155 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BookingService } from '../../../shared/booking.service';
-import { ProductService } from '../../../shared/product.service';
-import { Booking } from '../../../model/booking';
 import { LocalDataSource } from 'ng2-smart-table';
-import { DatePipe } from '@angular/common';
-import { NbDialogService } from '@nebular/theme';
-import { ShowCitizenButtonComponent } from '../button/show-citizen-button/show-citizen-button.component';
-import { ShowMedicalServiceButtonComponent } from '../button/show-medical-service-button/show-medical-service-button.component';
-import { Citizen } from '../../../model/citizen';
-import { ChargeReportStatusButtonComponent } from '../button/charge-report-status-button/charge-report-status-button.component';
-import { ShowReportStatusComponent } from '../button/show-report-status/show-report-status.component';
-import { DeleteBookingButtonComponent } from '../button/delete-booking-button/delete-booking-button.component';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../model/product';
+import { ProductService } from '../../../shared/product.service';
+import { TableActionsComponent } from '../../../shared/table-actions/table-actions.component';
+import { DialogComponent } from "../../../shared/dialog/dialog.component";
+import { ShowDetailsModalComponent } from '../modal_window/show-details-modal/show-details-modal.component';
+import { ProductDetailsDTO } from '../models/ProductDetailsDTO';
+
+
 @Component({
   selector: 'ngx-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
+  source: LocalDataSource = new LocalDataSource();
+  products: ProductDetailsDTO[];
   to_query_status: number;
   private sub: any;
   @Input() value;
 
   settings = {
-    actions: {
-      add: false,
-      edit: false,
-      delete: false,
-    },
     columns: {
-      id: {
-        title: 'Id',
-        type: 'string',
-      },
       name: {
         title: 'Nome',
         type: 'string',
       },
-      description: {
-        title: 'Description',
+      surname: {
+        title: 'Cognome',
         type: 'string',
       },
-      price: {
-        title: 'Price',
-        type: 'number',
+      businessName: {
+        title: 'Ragione Sociale',
+        type: 'string',
       },
-      // oraPrenotazione: {
-      //   title: 'Ora prenotazione',
-      //   type: 'string',
-      //   valuePrepareFunction: (date) => {
-      //     console.log(date)
-      //     return date;
-      //   },
-      //   filter: false
-      // },
-      status: {
-        title: 'Status',
+      vatNumber: {
+        title: 'Partita Iva',
+        type: 'string',
+      },
+      country: {
+        title: 'Nazione',
+        type: 'string',
+      },
+      city: {
+        title: 'Città',
+        type: 'string',
+      },
+      email: {
+        title: 'Email',
+        type: 'string',
+      },
+      phoneNumber: {
+        title: 'Telefono',
+        type: 'string',
+      },
+      actions: {
+        title: "Azioni",
+        filter: false,
+        sort: false,
         type: "custom",
         valuePrepareFunction: (cell, row) => {
-          return row;
+          let deleteEnalbed = true;
+          console.log(row.createdBy);
+          return [
+            {
+              action: "edit",
+              enabled: true,
+              status: "warning",
+              icon: "edit-2",
+              tooltip: "Modifica"
+            },
+            {
+              action: "delete",
+              enabled: deleteEnalbed,
+              status: "danger",
+              icon: "trash-2",
+              tooltip: "Elimina"
+            },
+            {
+              action: "share",
+              enabled: deleteEnalbed,
+              status: "success",
+              icon: "share",
+              tooltip: "Condividi"
+            },
+            {
+              action: "details",
+              enabled: true,
+              status: "primary",
+              icon: "file-text-outline",
+              tooltip: "Dettagli"
+            },
+            {
+              action: "archive",
+              enabled: true,
+              status: "warning",
+              icon: "archive-outline",
+              tooltip: "Archivia"
+            },
+/*             {
+              action: "archive",
+              enabled: true,
+              status: "success",
+              icon: "book-outline",
+              tooltip: "Ordini"
+            }, */
+            {
+              action: "newOrder",
+              enabled: true,
+              status: "primary",
+              icon: "plus-circle-outline",
+              tooltip: "Nuovo ordine"
+            },
+/*             {
+              action: "profile",
+              enabled: true,
+              status: "success",
+              icon: "arrow-circle-right-outline",
+              tooltip: "Profilo"
+            }, */
+            {
+              action: "stats",
+              enabled: true,
+              status: "info",
+              icon: "pie-chart-outline",
+              tooltip: "Statistiche"
+            },
+          ];
         },
-        renderComponent: ChargeReportStatusButtonComponent,
-        filter: false
-      },
-      elimina: {
-        title: 'Elimina',
-        type: 'custom',
-        filter: false,
-        valuePrepareFunction: (cell, row) => {
-          return row.id;
+        renderComponent: TableActionsComponent,
+        onComponentInitFunction: (instance) => {
+          instance.onCustom.subscribe((value) => {
+            this.onCustom(value, instance.rowData);
+          });
         },
-        renderComponent: DeleteBookingButtonComponent
       },
     },
-
+    actions: {
+      add: false,
+      edit: false,
+      delete: false,
+      share: false,
+    },
   };
-  source: LocalDataSource = new LocalDataSource();
-  data: Booking[];
+
+
 
   constructor(private productService: ProductService, 
-    private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
+    private dialogService: NbDialogService, 
+    private route: ActivatedRoute, private router: Router, private toastrService: NbToastrService) {
     route.params.subscribe(params => {
       if (params['status'] === "active") {
         this.to_query_status = 0;
@@ -93,21 +161,80 @@ export class ProductListComponent implements OnInit {
     /*This do the trick!*/
     router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
+
   ngOnInit(): void {
+      this.fetchTableData();
+  }
 
-/*     this.bookingService.getBookingsByStatus(this.to_query_status).subscribe(booking => {
-      this.booking = booking;
-      console.log(this.booking);
-      this.source.load(this.booking);
-    }); */
+  showSuccess() {
+    this.toastrService.success("Eliminato");
+  }
 
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-      console.log(this.products);
-      this.source.load(this.products);
+  showError(error) {
+    if (error.status == "500" && error.ok == false) {
+      this.toastrService.danger("DANGER"
+      );
+    } else {
+      this.toastrService.danger(
+        error.message,
+        "ERROR MESSAGE"
+      );
+    }
+  }
+
+
+
+fetchTableData() {
+  this.productService.getAllProducts().subscribe(products => {
+    this.products = products;
+    console.log(this.products);
+    this.source.load(this.products);
+  });
+}
+onCustom(event, data) {
+  if (event == "delete") {
+    this.dialogService
+      .open(DialogComponent, {
+        context: {
+          title:"TITOLO",
+          message: "TESTO",
+        },
+      })
+      .onClose.subscribe((res) => {
+        if (res) {
+          this.productService.deleteProduct(data.id).subscribe(
+            () => {
+              this.fetchTableData();
+              this.showSuccess();
+            },
+            (error) => this.showError(error)
+          );
+        } else return;
+      });
+  } else if (event == "details") {
+    this.dialogService
+    .open(ShowDetailsModalComponent, {
+      context: {
+        toDialog : data 
+      },
+    })
+  }
+  else if (event == "edit") {
+    this.dialogService
+    .open(ShowDetailsModalComponent, {
+      context: {
+        toDialog : data,
+        disabled : false,
+      },
+    }).onClose.subscribe((res) => {
+      if (res) {
+            this.fetchTableData();
+      } else return;
     });
+  }  else if (event == "stats") {
+    this.router.navigate(["../../../product/dashboard/1"], {
+      relativeTo: this.route,
+    });  
   }
 }
-function Schemas(arg0: {}) {
-  throw new Error('Function not implemented.');
 }

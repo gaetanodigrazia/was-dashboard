@@ -2,21 +2,21 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from '../../../model/customer';
-import { CustomerService } from '../../../shared/customer.service';
+import { StockService } from '../../../shared/stock.service';
 import { TableActionsComponent } from '../../../shared/table-actions/table-actions.component';
 import { DialogComponent } from "../../../shared/dialog/dialog.component";
 import { ShowDetailsModalComponent } from '../modal_window/show-details-modal/show-details-modal.component';
+import { StockDetailsDTO } from '../models/StockDetailsDTO';
 
 
 @Component({
-  selector: 'ngx-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  selector: 'ngx-stock-list',
+  templateUrl: './stock-list.component.html',
+  styleUrls: ['./stock-list.component.scss']
 })
-export class CustomerListComponent implements OnInit {
+export class StockListComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
-  products: Customer[];
+  stocks: StockDetailsDTO[];
   to_query_status: number;
   private sub: any;
   @Input() value;
@@ -147,7 +147,7 @@ export class CustomerListComponent implements OnInit {
 
 
 
-  constructor(private customerService: CustomerService, 
+  constructor(private stockService: StockService, 
     private dialogService: NbDialogService, 
     private route: ActivatedRoute, private router: Router, private toastrService: NbToastrService) {
     route.params.subscribe(params => {
@@ -185,10 +185,10 @@ export class CustomerListComponent implements OnInit {
 
 
 fetchTableData() {
-  this.customerService.getAllCustomers().subscribe(products => {
-    this.products = products;
-    console.log(this.products);
-    this.source.load(this.products);
+  this.stockService.getAllStocks().subscribe(stocks => {
+    this.stocks = stocks;
+    console.log(this.stocks);
+    this.source.load(this.stocks);
   });
 }
 onCustom(event, data) {
@@ -202,7 +202,7 @@ onCustom(event, data) {
       })
       .onClose.subscribe((res) => {
         if (res) {
-          this.customerService.deleteCustomer(data.id).subscribe(
+          this.stockService.deleteStock(data.id).subscribe(
             () => {
               this.fetchTableData();
               this.showSuccess();
@@ -232,7 +232,7 @@ onCustom(event, data) {
       } else return;
     });
   }  else if (event == "stats") {
-    this.router.navigate(["../../../customer/dashboard/1"], {
+    this.router.navigate(["../../../stock/dashboard/1"], {
       relativeTo: this.route,
     });  
   }

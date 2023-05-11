@@ -62,26 +62,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Prodotti',
     icon: 'cube-outline',
-    link: '/pages/',
     children: [
       {
         title: 'Lista',
-        link: 'product/list/active',
+        link: '/pages/product/list/active',
         icon: 'list-outline',
       },
       {
-        title: 'Nuova prenotazione',
-        link: 'user/list/booking',
+        title: 'Nuovo prodotto',
+        link: '/pages/product/form/create',
         icon: 'plus-outline'
       },
       {
-        title: 'Modifica prenotazione',
-        link: '/pages/smart-table',
-        icon: 'edit-outline'
-      },
-      {
-        title: 'Archivio prenotazioni',
-        link: 'booking/list/archived',
+        title: 'Archivio prodotti',
+        link: '/pages/product/list/archived',
         icon: 'archive-outline',
       },
     ],
@@ -123,7 +117,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   }, */
-  {
+/*   {
     title: 'Report',
     icon: 'clipboard-outline',
     children: [
@@ -159,7 +153,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/tabs',
       },
     ],
-  },
+  }, */
 /*   {
     title: 'Fatture',
     icon: 'archive-outline',
@@ -178,7 +172,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ],
   }, */
-  {
+/*   {
     title: 'Statistiche',
     icon: 'pie-chart-outline',
     children: [
@@ -204,59 +198,68 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/tabs',
       },
     ],
+  }, */
+  {
+    title: 'Fornitori',
+    icon: 'globe-2-outline',
+    children: [
+      {
+        title: 'Lista',
+        link: '/pages/supplier/list/active',
+        icon: 'list-outline',
+      },
+      {
+        title: 'Nuovo fornitore',
+        link: '/pages/supplier/form/create',
+        icon: 'plus-outline'
+      },
+      {
+        title: 'Archivio fornitori',
+        link: '/pages/supplier/list/archived',
+        icon: 'archive-outline',
+      },
+    ],
   },
   {
     title: 'Magazzino',
     icon: 'layers-outline',
     children: [
       {
-        title: 'Stepper',
-        link: '/pages/layout/stepper',
+        title: 'Lista',
+        link: '/pages/stock/list/active',
+        icon: 'list-outline',
       },
       {
-        title: 'List',
-        link: '/pages/layout/list',
+        title: 'Nuova scorta',
+        link: '/pages/stock/form/create',
+        icon: 'plus-outline'
       },
       {
-        title: 'Infinite List',
-        link: '/pages/layout/infinite-list',
-      },
-      {
-        title: 'Accordion',
-        link: '/pages/layout/accordion',
-      },
-      {
-        title: 'Tabs',
-        pathMatch: 'prefix',
-        link: '/pages/layout/tabs',
+        title: 'Archivio scorte',
+        link: '/pages/stock/list/archived',
+        icon: 'archive-outline',
       },
     ],
   },
-  {
+/*   {
     title: 'Ordini',
     icon: 'car-outline',
     children: [
       {
-        title: 'Stepper',
-        link: '/pages/layout/stepper',
+        title: 'Lista',
+        link: '/pages/order/list/active',
+        icon: 'list-outline',
       },
       {
-        title: 'List',
-        link: '/pages/layout/list',
+        title: 'Nuovo ordine',
+        link: '/pages/customer/list/active',
+        icon: 'plus-outline'
       },
       {
-        title: 'Infinite List',
-        link: '/pages/layout/infinite-list',
-      },
-      {
-        title: 'Accordion',
-        link: '/pages/layout/accordion',
-      },
-      {
-        title: 'Tabs',
-        pathMatch: 'prefix',
-        link: '/pages/layout/tabs',
+        title: 'Archivio ordini',
+        link: '/pages/order/list/archived',
+        icon: 'archive-outline',
       },
     ],
-  },
+  }, */
 ];

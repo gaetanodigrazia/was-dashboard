@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerCreateComponent } from './customer-forms/customer-create/customer-create.component';
 import { CustomerRouterComponent } from './customer-router.component';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 
 
 
@@ -15,6 +16,9 @@ const routes: Routes = [{
   }, {
     path: 'list/:status',
     component: CustomerListComponent,
+  }, {
+    path: 'dashboard/:userId',
+    component: CustomerDashboardComponent,
   }],
 }];
 

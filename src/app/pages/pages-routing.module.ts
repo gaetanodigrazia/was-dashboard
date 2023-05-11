@@ -58,9 +58,14 @@ const routes: Routes = [{
         .then(m => m.CustomerViewModule),
     },
     {
-      path: 'product/list/:status',
-      loadChildren: () => import('./product_view/module/product-list.module')
-        .then(m => m.ProductListModule),
+      path: 'product',
+      loadChildren: () => import('./product_view/product-view.module')
+        .then(m => m.ProductViewModule),
+    },
+    {
+      path: 'stock',
+      loadChildren: () => import('./stock_view/stock-view.module')
+        .then(m => m.StockViewModule),
     },
     {
       path: 'booking/list/:status',
